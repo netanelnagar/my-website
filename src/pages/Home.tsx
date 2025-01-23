@@ -1,10 +1,15 @@
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import AboutMe from "../components/AboutMe";
 
-function Home() {
+const Home = () => {
   return (
-    <div className="h-full w-full overflow-y-scroll p-4 grid ">
-      
-    </div>
-  )
-}
+    <main className="min-h-dvh bg-white">
+      <Navbar />
+      <Hero />
+      <AboutMe />
+    </main>
+  );
+};
 
 export default Home;
