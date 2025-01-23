@@ -1,7 +1,9 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import Layout from "./pages/Layout";
+import { Outlet } from "react-router-dom";
+import Navbar from "./pages/Navbar";
+import Footer from "./pages/Footer";
 
 const queryClient = new QueryClient({
 
@@ -9,8 +11,12 @@ const queryClient = new QueryClient({
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-   <ReactQueryDevtools />
-    <Layout />
+    <div className="min-h-dvh bg-white overflow-y-auto flex flex-col">
+    <Navbar />
+      <Outlet />
+      <Footer />
+    </div>
+    <ReactQueryDevtools />
   </QueryClientProvider>
 );
 

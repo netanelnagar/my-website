@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,20 +10,20 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="/" className="text-primary text-xl font-bold">
-          Start Bootstrap
-        </a>
+        <Link to="/" className="text-primary text-xl font-bold">
+          Netanel Nagar
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {menuItems.map((item) => (
-            <a
+            <NavLink
               key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-gray-600 hover:text-primary transition-colors"
+              to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+              className="text-gray-600 hover:text-primary transition-colors navLink"
             >
               {item}
-            </a>
+            </NavLink>
           ))}
         </div>
 
@@ -44,14 +45,14 @@ const Navbar = () => {
           <div className="absolute top-full left-0 right-0 bg-white border-t md:hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               {menuItems.map((item) => (
-                <a
+                <NavLink
                   key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  to={`/${item.toLowerCase() === "home" ? "" : item.toLowerCase()}`}
+                  className="text-gray-600 hover:text-primary transition-colors navLink"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
