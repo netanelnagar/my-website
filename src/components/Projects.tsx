@@ -16,7 +16,7 @@ const Projects = () => {
         },
     ];
     return (
-        <section className="py-24 bg-white flex-grow bg-slate-100/50">
+        <section className="py-24 flex-grow bg-slate-100/50">
             <div className="max-w-[800px] mx-auto px-4 md:px-8">
                 <div className="flex justify-center h-24">
                     <h1 className="text-6xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-center">

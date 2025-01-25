@@ -54,10 +54,13 @@ const Resume = () => {
           <h2 className="text-3xl font-bold text-primary ">
             Experience
           </h2>
-          <Button className="bg-primary hover:bg-primary/90 text-white">
+          <a className="h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 text-white" 
+          href="/netanelnagar-fullstack.pdf" 
+          download="Netanel_Nagar_Resume"
+          >
             <Download className="mr-2" />
             Download Resume
-          </Button>
+          </a>
         </div>
         <div>
           <div className="space-y-8 mt-5">

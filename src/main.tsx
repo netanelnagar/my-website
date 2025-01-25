@@ -9,6 +9,7 @@ import Home from './pages/Home.tsx';
 import AboutMe from './components/AboutMe.tsx';
 import Resume from './components/Resume.tsx';
 import Projects from './components/Projects.tsx';
+import Contact from './components/Contact.tsx';
 
 const router = createBrowserRouter([
     {
@@ -23,17 +24,23 @@ const router = createBrowserRouter([
                 //   loader: teamLoader,
             },
             {
-                  path: "resume",
+                path: "resume",
                 // index: true,
                 element: <Resume />,
                 //   loader: teamLoader,
             },
             {
                 path: "projects",
-              // index: true,
-              element: <Projects />,
-              //   loader: teamLoader,
-          },
+                // index: true,
+                element: <Projects />,
+                //   loader: teamLoader,
+            },
+            {
+                path: "contact",
+                // index: true,
+                element: <Contact />,
+                //   loader: teamLoader,
+            },
         ],
     },
 ]);

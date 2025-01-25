@@ -9,7 +9,8 @@ const queryClient = new QueryClient({
 
 });
 
-const App = () => (
+const App = () => {
+  return(
   <QueryClientProvider client={queryClient}>
     <div className="min-h-dvh bg-white overflow-y-auto flex flex-col">
     <Navbar />
@@ -18,6 +19,6 @@ const App = () => (
     </div>
     <ReactQueryDevtools />
   </QueryClientProvider>
-);
+)};
 
 export default App;
