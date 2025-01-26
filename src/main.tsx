@@ -1,48 +1,69 @@
 import { createRoot } from 'react-dom/client'
+import { Suspense, lazy } from 'react';
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ErrorBoundary from './lib/ErrorBoundary.tsx';
 import App from './App.tsx'
 import './index.css'
-import Home from './pages/Home.tsx';
-import AboutMe from './components/AboutMe.tsx';
-import Resume from './components/Resume.tsx';
-import Projects from './components/Projects.tsx';
-import Contact from './components/Contact.tsx';
+
+const Resume = lazy(() => import('./components/Resume.tsx'));
+const Projects = lazy(() => import('./components/Projects.tsx'));
+const Home = lazy(() => import('./pages/Home.tsx'));
+const Contact = lazy(() => import('./components/Contact.tsx'));
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-        //   loader: rootLoader,
         children: [
             {
-                //   path: "home",
                 index: true,
-                element: <Home />,
-                //   loader: teamLoader,
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Home />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "resume",
-                // index: true,
-                element: <Resume />,
-                //   loader: teamLoader,
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Resume />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "projects",
-                // index: true,
-                element: <Projects />,
-                //   loader: teamLoader,
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Projects />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "contact",
-                // index: true,
-                element: <Contact />,
-                //   loader: teamLoader,
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Contact />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
         ],
     },
 ]);
 
-createRoot(document.getElementById("root")!).render(<RouterProvider router={router} />);
+const queryClient = new QueryClient();
+
+
+createRoot(document.getElementById("root")!).render(
+    <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+    </QueryClientProvider>
+);

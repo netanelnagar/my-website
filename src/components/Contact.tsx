@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "./ui/use-toast";
-import { sendForm } from "@emailjs/browser";
 
 interface ContactFormData {
   fullName: string;
@@ -23,10 +22,6 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-
-    const a = await sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', "data", {
-          publicKey: 'YOUR_PUBLIC_KEY',
-        })
       // Here you would typically send the data to your backend
       console.log("Form data:", data);
       toast({

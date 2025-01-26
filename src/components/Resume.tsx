@@ -1,46 +1,16 @@
 import { Download, Code, Scissors } from "lucide-react";
-import { Button } from "./ui/button";
 import { useEffect } from "react";
+import { useAppContext } from "./context/context";
 
 const Resume = () => {
+
+  const { data } = useAppContext();
 
   useEffect(() => {
     document.title = "Resume";
   }, []);
-  const professionalSkills = [
-    { title: "SEO/SEM Marketing", id: 1 },
-    { title: "Statistical Analysis", id: 2 },
-    { title: "Web Development", id: 3 },
-    { title: "Network Security", id: 4 },
-    { title: "Adobe Software Suite", id: 5 },
-    { title: "User Interface Design", id: 6 },
-  ];
 
-  const languages = [
-    { title: "HTML", id: 1 },
-    { title: "CSS", id: 2 },
-    { title: "JavaScript", id: 3 },
-    { title: "Python", id: 4 },
-    { title: "Ruby", id: 5 },
-    { title: "Node.js", id: 6 },
-  ];
-
-  const experiences = [
-    {
-      period: "2019 - Present",
-      title: "Web Developer",
-      company: "Stark Industries",
-      location: "Los Angeles, CA",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.",
-    },
-    {
-      period: "2017 - 2019",
-      title: "Web Developer",
-      company: "Wayne Enterprises",
-      location: "Gotham City, NY",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis.",
-    },
-  ];
+  const experiences = [data?.[1]];
 
   return (
     <section className="py-24 bg-slate-100/50">
@@ -54,9 +24,9 @@ const Resume = () => {
           <h2 className="text-3xl font-bold text-primary ">
             Experience
           </h2>
-          <a className="h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 text-white" 
-          href="/netanelnagar-fullstack.pdf" 
-          download="Netanel_Nagar_Resume"
+          <a className="h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary hover:bg-primary/90 text-white"
+            href={'netanelnagar-fullstack.pdf'}
+            download="Netanel_Nagar_Resume"
           >
             <Download className="mr-2" />
             Download Resume
@@ -64,7 +34,7 @@ const Resume = () => {
         </div>
         <div>
           <div className="space-y-8 mt-5">
-            {experiences.map((experience, index) => (
+            {data && experiences.map((experience, index) => (
               <div
                 key={index}
                 className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow border grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -94,12 +64,12 @@ const Resume = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {professionalSkills.map((skill) => (
+              {data?.[2].professionalSkills?.map((skill) => (
                 <div
-                  key={skill.id}
+                  key={skill}
                   className="p-4 bg-gray-50 rounded-lg "
                 >
-                  {skill.title}
+                  {skill}
                 </div>
               ))}
             </div>
@@ -113,12 +83,12 @@ const Resume = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {languages.map((language) => (
+              {data?.[2].languages?.map((language) => (
                 <div
-                  key={language.id}
+                  key={language}
                   className="p-4 bg-gray-50 rounded-lg "
                 >
-                  {language.title}
+                  {language}
                 </div>
               ))}
             </div>

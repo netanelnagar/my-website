@@ -1,6 +1,11 @@
+
 import { Twitter, Linkedin, Github } from "lucide-react";
+import { useAppContext } from "./context/context";
 
 const AboutMe = () => {
+ const {data} = useAppContext();
+
+ console.log(data)
   return (
     <section className="py-32 bg-white">
       <div className="container mx-auto px-4 max-w-3xl text-center">
@@ -10,11 +15,11 @@ const AboutMe = () => {
         </h2>
 
         <h3 className="text-2xl md:text-3xl text-gray-700 font-medium mb-8">
-          My name is Netanel Nagar and I help brands grow.
+          {data?.[0].header}
         </h3>
 
         <p className="text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
-          I'm a Full Stack developer who helps brands grow their online presence and drive conversions. I specialize in building scalable and efficient web applications, with a proven track record of delivering high-quality projects on time and within budget. My expertise includes React, Node.js, AWS etc. I'm passionate about leveraging technology to solve complex business challenges and create exceptional user experiences. I'm looking for a challenging development role where I can contribute to a company's success and continue to expand my skills.
+          {data?.[0].body}
         </p>
 
         <div className="flex justify-center gap-8">
@@ -26,7 +31,7 @@ const AboutMe = () => {
             <Twitter size={32} />
           </a> */}
           <a
-            href="https://www.linkedin.com/in/netanel-n"
+            href={data?.[0].linkedIn}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -35,7 +40,7 @@ const AboutMe = () => {
             <Linkedin size={32} />
           </a>
           <a
-            href="https://github.com/netanelnagar"
+            href={data?.[0].gitHub}
             target="_blank"
             className="text-primary hover:text-secondary transition-colors"
             aria-label="GitHub"

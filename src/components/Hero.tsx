@@ -55,7 +55,8 @@ const Hero = () => {
             <img
               src="/my-img.png"
               alt="Professional portrait"
-              className="relative rounded-[2rem] w-full max-w-lg mx-auto "
+              className="relative rounded-[2rem] w-full max-w-lg mx-auto"
+              onLoad={() => console.log("image loaded")}
             />
           </div>
         </div>

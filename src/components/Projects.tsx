@@ -1,20 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useAppContext } from "./context/context";
+import { storage } from "@/lib/firebase";
+import { getDownloadURL, ref } from "firebase/storage";
+
+
+async function getUrl(imgName:string):Promise<string> {
+    const storageRef = ref(storage, imgName);
+      return await getDownloadURL(storageRef);
+}
+
 
 const Projects = () => {
+    const { data,isLoading } = useAppContext();
+    const [experiences, setExperiences] = useState([]);
 
     useEffect(() => {
         document.title = "Projects";
-    },[]);
-    const experiences = [
-        {
-           url: 'https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.",
-        },
-        {
-            url: 'https://plus.unsplash.com/premium_photo-1664536392896-cd1743f9c02c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis.",
-        },
-    ];
+    }, []);
+
+    useEffect(() => {
+        if (data) {
+            data.forEach(async (cell) => {
+                if (cell.imgName) {
+                    const url = await getUrl(cell.imgName);
+                    setExperiences((prev) => [...prev, { ...cell, url }]);
+                }
+            });
+        }
+    }, [data]);
+
+
+    if (!experiences.length) return <div className="loader m-auto h-6 w-6 "></div>;
+   
     return (
         <section className="py-24 flex-grow bg-slate-100/50">
             <div className="max-w-[800px] mx-auto px-4 md:px-8">
@@ -29,7 +46,7 @@ const Projects = () => {
                             key={index}
                             className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border flex flex-col sm:flex-row-reverse gap-4"
                         >
-                            <img src={experience.url} alt="" className="max-h-[200px] w-full sm:w-[400px] m-auto rounded-t-xl  sm:rounded-xl sm:pr-5"/>
+                            <img src={experience.url} alt="" className="max-h-[200px] w-full sm:w-[400px] m-auto rounded-t-xl  sm:rounded-xl sm:pr-5" />
                             <p className="text-gray-600 leading-relaxed p-6 grid place-items-center max-h-52 md:max-h-72 overflow-y-auto">
                                 {experience.description}
                                 {experience.description}
