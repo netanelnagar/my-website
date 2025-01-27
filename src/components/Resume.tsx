@@ -10,7 +10,6 @@ const Resume = () => {
     document.title = "Resume";
   }, []);
 
-  const experiences = [data?.[1]];
 
   return (
     <section className="py-24 bg-slate-100/50">
@@ -34,7 +33,7 @@ const Resume = () => {
         </div>
         <div>
           <div className="space-y-8 mt-5">
-            {data && experiences.map((experience, index) => (
+            {data?.experiences.map((experience, index) => (
               <div
                 key={index}
                 className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow border grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -64,7 +63,7 @@ const Resume = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {data?.[2].professionalSkills?.map((skill) => (
+              {data?.professionalSkillsAndLanguages.professionalSkills?.map((skill) => (
                 <div
                   key={skill}
                   className="p-4 bg-gray-50 rounded-lg "
@@ -83,7 +82,7 @@ const Resume = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {data?.[2].languages?.map((language) => (
+              {data?.professionalSkillsAndLanguages.languages?.map((language) => (
                 <div
                   key={language}
                   className="p-4 bg-gray-50 rounded-lg "
@@ -94,7 +93,6 @@ const Resume = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

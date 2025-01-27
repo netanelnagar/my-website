@@ -22,8 +22,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send the data to your backend
-      console.log("Form data:", data);
+      // TODO: send form data to server
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
@@ -44,8 +43,6 @@ const Contact = () => {
     document.title = "Contact";
   }, [])
 
-
-  console.log()
 
   return (
     <div className="py-24 flex-grow px-4 sm:px-6 lg:px-8">
