@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Home", "Resume", "Projects", "Contact"];
+  const menuItems = ["Home", "Resume", "Projects"];
 
   return (
     <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 py-4">

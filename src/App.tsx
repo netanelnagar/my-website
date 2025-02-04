@@ -10,7 +10,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 
 const App = () => {
   const { data, isError, isLoading } = useQuery({
-    queryKey: ['firebase', 'home'],
+    queryKey: ['home'],  // unique identifier for this query
     queryFn: exposeDb(db, async (db) => {
       const data = await collection(db, 'home');
       const snapshot = await getDocs(data);
@@ -23,6 +23,7 @@ const App = () => {
           dataInOrder[doc.id.startsWith('project') ? "projects" : "experiences"].push(doc.data())
         } else { dataInOrder[doc.id] = doc.data() }
       });
+      console.log(dataInOrder)
       return dataInOrder;
     }),
   });

@@ -24,6 +24,8 @@ const Projects = () => {
                 if (cell.imgName) {
                     const url = await getUrl(cell.imgName);
                     setExperiences((prev) => [...prev, { ...cell, url }]);
+                }else{
+                    setExperiences((prev) => [...prev, { ...cell }]);
                 }
             });
         }
@@ -46,7 +48,7 @@ const Projects = () => {
                             key={index}
                             className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border flex flex-col sm:flex-row-reverse gap-4"
                         >
-                            <img src={experience.url} alt="" className="max-h-[200px] w-full sm:w-[400px] m-auto rounded-t-xl  sm:rounded-xl sm:pr-5" />
+                            <img src={experience.url} alt="" className="max-h-[300px] w-full sm:w-[400px] m-auto rounded-t-xl  sm:rounded-xl sm:pr-5 sm:p-2" />
                             <p className="text-gray-600 leading-relaxed p-6 grid place-items-center max-h-52 md:max-h-72 overflow-y-auto">
                                 {experience.description}
                             </p>

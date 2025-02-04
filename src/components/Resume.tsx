@@ -38,17 +38,25 @@ const Resume = () => {
                 key={index}
                 className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow border grid grid-cols-1 md:grid-cols-3 gap-4"
               >
-                <div className="flex flex-col items-center md:justify-between bg-gray-100/70  p-3 rounded-lg">
+                <div className="flex flex-col items-center md:justify-evenly bg-gray-100/70  p-3 rounded-lg">
                   <span className="text-primary font-bold">
                     {experience.period}
                   </span>
-                  <h3 className="text-xl font-bold mt-2">{experience.title}</h3>
-                  <p className="text-gray-600">
+                  <h3 className="text-xl font-bold mt-2 text-center">{experience.title}</h3>
+                  <p className="text-gray-600 text-center">
                     {experience.company} | {experience.location}
                   </p>
                 </div>
                 <p className="text-gray-600 leading-relaxed md:col-span-2">
-                  {experience.description}
+                  {experience.description.replace(/\\n/g, '\n').
+                    split('\n').map((line, index) => (
+                      <span key={index}>
+                        {line}
+                        <br />
+                      </span>
+                    ))
+                  }
+                  {console.log(experience.description.replace(/\\n/g, '\n').split('\n'))}
                 </p>
               </div>
             ))}
