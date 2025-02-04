@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { Suspense, lazy } from 'react';
 import {
     createBrowserRouter,
+    Navigate,
     RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -56,7 +57,16 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />
             },
         ],
+
     },
+    {
+        path: "/my-website",
+        element: <Navigate to={"/"}/>
+    },
+    {
+        path: "*",
+        element: <div>Page not found</div>,
+    }
 ]);
 
 const queryClient = new QueryClient({
