@@ -1,4 +1,7 @@
-import { Download, Code, Scissors } from "lucide-react";
+// import { Download, Code, Scissors } from "lucide-react";
+import { CiSaveDown2 } from "react-icons/ci";
+import { HiScissors } from "react-icons/hi2";
+import { IoCodeSlashSharp } from "react-icons/io5";
 import { useEffect } from "react";
 import { useAppContext } from "./context/context";
 
@@ -27,7 +30,7 @@ const Resume = () => {
             href={'netanelnagar-fullstack.pdf'}
             download="Netanel_Nagar_Resume"
           >
-            <Download className="mr-2" />
+            <CiSaveDown2   className="mr-2" />
             Download Resume
           </a>
         </div>
@@ -65,7 +68,7 @@ const Resume = () => {
         <div className="mt-16 space-y-8 shadow-md border p-10 rounded-lg bg-white">
           <div >
             <div className="flex items-center gap-3 mb-8">
-              <Scissors className="w-8 h-8 text-primary" />
+              <HiScissors className="w-8 h-8 text-primary" />
               <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
                 Professional Skills
               </h2>
@@ -84,7 +87,7 @@ const Resume = () => {
 
           <div >
             <div className="flex items-center gap-3 mb-8">
-              <Code className="w-8 h-8 text-primary" />
+              <IoCodeSlashSharp className="w-8 h-8 text-primary" />
               <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
                 Languages
               </h2>

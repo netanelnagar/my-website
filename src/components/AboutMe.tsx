@@ -1,9 +1,9 @@
-
-import { Twitter, Linkedin, Github } from "lucide-react";
+import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
+import { IoLogoGithub } from "react-icons/io";
 import { useAppContext } from "./context/context";
 
 const AboutMe = () => {
- const {data} = useAppContext();
+  const { data } = useAppContext();
 
   return (
     <section className="py-32 bg-white">
@@ -21,13 +21,6 @@ const AboutMe = () => {
         </p>
 
         <div className="flex justify-center gap-8">
-          {/* <a
-            href="#twitter"
-            className="text-[#4F46E5] hover:text-[#D946EF] transition-colors"
-            aria-label="Twitter"
-          >
-            <Twitter size={32} />
-          </a> */}
           <a
             href={data?.aboutMe.linkedIn}
             target="_blank"
@@ -35,7 +28,7 @@ const AboutMe = () => {
             aria-label="LinkedIn"
             className="text-primary hover:text-secondary transition-colors"
           >
-            <Linkedin size={32} />
+            <FaLinkedinIn  size={32} />
           </a>
           <a
             href={data?.aboutMe.gitHub}
@@ -43,7 +36,15 @@ const AboutMe = () => {
             className="text-primary hover:text-secondary transition-colors"
             aria-label="GitHub"
           >
-            <Github size={32} />
+            <IoLogoGithub  size={32} />
+          </a>
+          <a
+            href=" https://wa.me/972555686119"
+            target="_blank"
+            className="text-primary hover:text-secondary transition-colors"
+            aria-label="Twitter"
+          >
+            <FaWhatsapp size={32} />
           </a>
         </div>
       </div>

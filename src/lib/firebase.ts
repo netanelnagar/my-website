@@ -25,7 +25,7 @@ export const exposeDb = (db, callback) => {
       return await callback(db);
     } catch (error) {
       console.error("Error in exposeDb:", error);
-      throw error; // Re-throw the error to be caught by useQuery
+      throw error; 
     }
   };
 };

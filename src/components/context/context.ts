@@ -1,7 +1,6 @@
 import { createContext, useContext } from 'react';
 
 
-
 interface MyAppContextValue {
     data: any;
     isError: boolean;
@@ -9,7 +8,6 @@ interface MyAppContextValue {
 }
 
 export const MyAppContext = createContext<MyAppContextValue | null>(null);
-
 
 
 export const useAppContext = () => {

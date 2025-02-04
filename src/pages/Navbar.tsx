@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+// import { Menu, X } from "lucide-react";
+import { MdOutlineMenu } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -34,9 +36,9 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
-            <X className="h-6 w-6 text-gray-600" />
+            <IoMdClose className="h-6 w-6 text-gray-600" />
           ) : (
-            <Menu className="h-6 w-6 text-gray-600" />
+            <MdOutlineMenu className="h-6 w-6 text-gray-600" />
           )}
         </button>
 

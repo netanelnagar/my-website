@@ -11,28 +11,34 @@ async function getUrl(imgName: string): Promise<string> {
 
 
 const Projects = () => {
-    const { data, isLoading } = useAppContext();
+    const { data } = useAppContext();
     const [experiences, setExperiences] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         document.title = "Projects";
     }, []);
 
     useEffect(() => {
-        if (data) {
-            data.projects.forEach(async (cell) => {
-                if (cell.imgName) {
-                    const url = await getUrl(cell.imgName);
-                    setExperiences((prev) => [...prev, { ...cell, url }]);
-                }else{
-                    setExperiences((prev) => [...prev, { ...cell }]);
+
+        async function loadUrl() {
+            if (data) {
+                for (const cell of data.projects) {
+                    if (cell.imgName) {
+                        const url = await getUrl(cell.imgName);
+                        setExperiences((prev) => [...prev, { ...cell, url }]);
+                    } else {
+                        setExperiences((prev) => [...prev, { ...cell }]);
+                    }
                 }
-            });
+                setIsLoading(false);
+            }
         }
+        loadUrl();
     }, [data]);
 
 
-    if (!experiences.length) return <div className="loader m-auto h-6 w-6 "></div>;
+    if (!experiences.length || isLoading) return <div className="loader m-auto h-6 w-6 "></div>;
 
     return (
         <section className="py-24 flex-grow bg-slate-100/50">
@@ -46,11 +52,22 @@ const Projects = () => {
                     {experiences.map((experience, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border flex flex-col sm:flex-row-reverse gap-4"
+                            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border flex flex-col sm:flex-row-reverse"
                         >
-                            <img src={experience.url} alt="" className="max-h-[300px] w-full sm:w-[400px] m-auto rounded-t-xl  sm:rounded-xl sm:pr-5 sm:p-2" />
-                            <p className="text-gray-600 leading-relaxed p-6 grid place-items-center max-h-52 md:max-h-72 overflow-y-auto">
-                                {experience.description}
+                            <div className="w-full md:w-1/3 p-4 flex justify-center items-center">
+                                <img loading="lazy" src={experience.url} className="w-full h-auto max-w-[250px] max-h-[250px] rounded-xl object-contain" />
+                            </div>
+                            <p className="w-full sm:w-2/3 text-gray-600 leading-relaxed p-6 grid place-items-center max-h-[350px] overflow-y-auto gap-3">
+                                {Array.isArray(experience.tech) && <div className="text-primary font-bold w-full max-h-32 overflow-auto bg-gray-100/70 p-2 rounded-lg">
+                                    {experience.tech.join(" | ")}
+                                </div>}
+                                {experience.description.replace(/\\n/g, '\n').
+                                    split('\n').map((line, index) => (
+                                        <span key={index}>
+                                            {line}
+                                            <br />
+                                        </span>
+                                    ))}
                             </p>
                         </div>
                     ))}

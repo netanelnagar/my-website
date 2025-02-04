@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Mail } from "lucide-react";
+import { LuMail } from "react-icons/lu";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { useToast } from "./ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 interface ContactFormData {
   fullName: string;
@@ -50,7 +50,7 @@ const Contact = () => {
         <div className="text-center mb-12">
           <div className="flex justify-center mb-4">
             <div className="bg-gradient-to-r from-primary to-secondary p-3 rounded-lg">
-              <Mail className="h-6 w-6 text-white" />
+              <LuMail className="h-6 w-6 text-white" />
             </div>
           </div>
           <h1 className="text-4xl font-bold  mb-4">
