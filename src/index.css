@@ -1,22 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.my-name{
-  color: rgb(30 48 243);
-}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
 
-.link.active {
-  font-weight: 700;
-}
+  * {
+    @apply border-border;
+  }
 
-.nav-position{
-  left: -10px;
-  top: 71px;
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
 }
 
 ::-webkit-scrollbar {
   width: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    height: 15px;
+    width: 15px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -32,4 +47,30 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
+}
+
+.navLink.active{
+  font-weight: 700 !important;
+  color: #1E30F3;
+}
+
+
+
+.loader {
+  width: 45px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#1E30F3 0 0);
+  background: 
+    var(--c) 0%   100%,
+    var(--c) 50%  100%,
+    var(--c) 100% 100%;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {
+  0%  {background-size: 20% 100%,20% 100%,20% 100%}
+  20% {background-size: 20% 60% ,20% 100%,20% 100%}
+  40% {background-size: 20% 80% ,20% 60% ,20% 100%}
+  60% {background-size: 20% 100%,20% 80% ,20% 60% }
+  80% {background-size: 20% 100%,20% 100%,20% 80% }
+  100%{background-size: 20% 100%,20% 100%,20% 100%}
 }
