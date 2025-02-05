@@ -10,10 +10,8 @@ import ErrorBoundary from './components/ErrorBoundary.tsx';
 import App from './App.tsx'
 import './index.css'
 
-
-const urlBgPageNotFound = import.meta.env.VITE_BG_IMAGE_URL;
-
-document.documentElement.style.setProperty('--url-bg', `url(${urlBgPageNotFound})`);
+//to add url for PageNotFound component
+document.documentElement.style.setProperty('--url-bg', `url(${import.meta.env.VITE_BG_IMAGE_URL})`);
 
 const Resume = lazy(() => import('./components/Resume.tsx'));
 const Projects = lazy(() => import('./components/Projects.tsx'));
@@ -21,9 +19,11 @@ const Home = lazy(() => import('./pages/Home.tsx'));
 const Contact = lazy(() => import('./components/Contact.tsx'));
 const PageNotFound = lazy(() => import('./components/PageNotFound.tsx'));
 
+const isLocal = import.meta.env?.VITE_MODE !== 'local' ? true : false;
+
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: `${isLocal ? "/" : "/my-website/"}`,
         element: <App />,
         children: [
             {
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "*",
-                element: <PageNotFound/>,
+                element: <PageNotFound />,
             }
         ]
 
