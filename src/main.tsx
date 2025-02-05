@@ -36,7 +36,7 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />
             },
             {
-                path: "resume",
+                path: "/resume",
                 element: (
                     <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
                         <Resume />
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />
             },
             {
-                path: "projects",
+                path: "/projects",
                 element: (
                     <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
                         <Projects />
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />
             },
             {
-                path: "contact",
+                path: "/contact",
                 element: (
                     <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
                         <Contact />
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />
             },
             {
-                path: "*",
+                path: "/*",
                 element: <PageNotFound />,
             }
         ]
