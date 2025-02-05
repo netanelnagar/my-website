@@ -2,18 +2,24 @@ import { createRoot } from 'react-dom/client'
 import { Suspense, lazy } from 'react';
 import {
     createBrowserRouter,
-    Navigate,
     RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ErrorBoundary from './lib/ErrorBoundary.tsx';
+
+import ErrorBoundary from './components/ErrorBoundary.tsx';
 import App from './App.tsx'
 import './index.css'
+
+
+const urlBgPageNotFound = import.meta.env.VITE_BG_IMAGE_URL;
+
+document.documentElement.style.setProperty('--url-bg', `url(${urlBgPageNotFound})`);
 
 const Resume = lazy(() => import('./components/Resume.tsx'));
 const Projects = lazy(() => import('./components/Projects.tsx'));
 const Home = lazy(() => import('./pages/Home.tsx'));
 const Contact = lazy(() => import('./components/Contact.tsx'));
+const PageNotFound = lazy(() => import('./components/PageNotFound.tsx'));
 
 const router = createBrowserRouter([
     {
@@ -56,21 +62,18 @@ const router = createBrowserRouter([
                 ),
                 errorElement: <ErrorBoundary />
             },
-        ],
+            {
+                path: "*",
+                element: <PageNotFound/>,
+            }
+        ]
 
-    },
-    {
-        path: "/my-website",
-        element: <Navigate to={"/"}/>
-    },
-    {
-        path: "*",
-        element: <div>Page not found</div>,
     }
+
 ]);
 
 const queryClient = new QueryClient({
-    defaultOptions:{
+    defaultOptions: {
         queries: {
             staleTime: 1000 * 60,
         }
