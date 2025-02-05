@@ -53,7 +53,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-[2rem] transform rotate-6 opacity-20" />
             <img
               loading="lazy"
-              src={`${import.meta.env?.VITE_MODE?.startsWith("prod") ? "/my-website/" : ""}/my-img.png`}
+              src={`${import.meta.env.MODE?.startsWith("prod") ? "/my-website/" : ""}/my-img.png`}
               alt="Professional portrait"
               className="relative rounded-[2rem] w-full max-w-lg mx-auto"
             />
