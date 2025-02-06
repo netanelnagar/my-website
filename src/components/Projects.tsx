@@ -53,12 +53,12 @@ const Projects = () => {
                     {experiences.map((experience, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border flex flex-col sm:flex-row-reverse"
+                            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border flex flex-col sm:flex-row-reverse "
                         >
                             <div className="w-full md:w-1/3 p-4 flex justify-center items-center">
                                 <img loading="lazy" src={experience.url} className="w-full h-auto max-w-[250px] max-h-[250px] rounded-xl object-contain" />
                             </div>
-                            <div className="w-full md:w-2/3 text-gray-600 leading-relaxed p-6 grid place-items-center max-h-[450px] overflow-y-auto gap-3">
+                            <div className="w-full md:w-2/3 text-gray-600 leading-relaxed p-6 grid place-items-center  overflow-y-auto space-y-6 ">
                                 <div className={`flex ${experience?.gitHubLink ? 'justify-between': 'justify-center md:justify-start'} w-full text-primary font-bold`}>
                                     <span>{experience?.title}</span> 
                                     {experience?.gitHubLink && <a href={experience.gitHubLink} target="_blank"><FaGithub className="h-7 w-7"/> </a>}
