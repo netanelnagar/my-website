@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { useAppContext } from "./context/context";
 import { storage } from "@/lib/firebase";
+import { FaGithub } from "react-icons/fa6";
 
 
 async function getUrl(imgName: string): Promise<string> {
@@ -57,7 +58,11 @@ const Projects = () => {
                             <div className="w-full md:w-1/3 p-4 flex justify-center items-center">
                                 <img loading="lazy" src={experience.url} className="w-full h-auto max-w-[250px] max-h-[250px] rounded-xl object-contain" />
                             </div>
-                            <p className="w-full sm:w-2/3 text-gray-600 leading-relaxed p-6 grid place-items-center max-h-[350px] overflow-y-auto gap-3">
+                            <div className="w-full md:w-2/3 text-gray-600 leading-relaxed p-6 grid place-items-center max-h-[450px] overflow-y-auto gap-3">
+                                <div className={`flex ${experience?.gitHubLink ? 'justify-between': 'justify-center md:justify-start'} w-full text-primary font-bold`}>
+                                    <span>{experience?.title}</span> 
+                                    {experience?.gitHubLink && <a href={experience.gitHubLink} target="_blank"><FaGithub className="h-7 w-7"/> </a>}
+                                </div>
                                 {Array.isArray(experience.tech) && <div className="text-primary font-bold w-full max-h-32 overflow-auto bg-gray-100/70 p-2 rounded-lg">
                                     {experience.tech.join(" | ")}
                                 </div>}
@@ -68,7 +73,7 @@ const Projects = () => {
                                             <br />
                                         </span>
                                     ))}
-                            </p>
+                            </div>
                         </div>
                     ))}
                 </div>

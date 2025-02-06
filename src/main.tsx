@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { Suspense, lazy } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import {
     createBrowserRouter,
     Navigate,
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/my-website/",
-        element: <Navigate to={"/"}/>
+        element: <Navigate to={"/"} />
     }
 ]);
 
@@ -77,7 +77,10 @@ const queryClient = new QueryClient({
 
 
 createRoot(document.getElementById("root")!).render(
-    <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-    </QueryClientProvider>
+    <StrictMode>
+
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+        </QueryClientProvider>
+    </StrictMode>
 );

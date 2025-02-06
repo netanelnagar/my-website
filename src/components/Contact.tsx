@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { LuMail } from "react-icons/lu";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { RiLoader2Line } from "react-icons/ri";
 
 interface ContactFormData {
   fullName: string;
@@ -14,15 +15,36 @@ interface ContactFormData {
 }
 
 const Contact = () => {
-  const { register, handleSubmit, reset, formState: { errors, isLoading } } = useForm<ContactFormData>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactFormData>();
   const { toast } = useToast();
+  const moreThanTwo = useRef<number>(0)
 
   const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
+    if (moreThanTwo.current >= 1) {
+      toast({
+        title: "Too many submissions",
+        description: "Please wait one hour before sending another message.",
+      });
+      return;
+    }
+    moreThanTwo.current++;
 
     try {
-      // TODO: send form data to server
+      const res = await fetch('https://xiosh47esxpxec3jdgp6qv32xm0luxgn.lambda-url.eu-central-1.on.aws/', {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          subject: `Email from ${data.fullName} - ${data.email} ${data.phone ? `- ${data.phone}` : ""}`,
+          emailBody: data.message,
+          toAddress: "netanelnagar1234@gmail.com"
+        })
+      })
+      if (!res.ok) {
+        throw new Error((await res.json()).body);
+      }
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
@@ -30,17 +52,20 @@ const Contact = () => {
       reset();
     } catch (error) {
       toast({
-        variant: "destructive",
         title: "Error",
         description: "Something went wrong. Please try again.",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   useEffect(() => {
     document.title = "Contact";
+    const interval = setInterval(() => {
+      moreThanTwo.current = 0;
+     }, 60 * 60 * 1000);
+
+    return () => clearInterval(interval);
+
   }, [])
 
 
@@ -117,7 +142,7 @@ const Contact = () => {
             className="w-full bg-primary hover:bg-primary/80 text-white py-3 rounded-lg transition-colors"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Sending..." : "Submit"}
+            {isSubmitting && <RiLoader2Line className="animate-spin" />} {isSubmitting ? "Sending..." : "Submit"}
           </Button>
         </form>
       </div>

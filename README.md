@@ -24,7 +24,7 @@ This section describes the projects featured on the website.
 1.  **Clone the repository:**
 
     ```bash
-    git clone [[repository URL]](https://github.com/netanelnagar/my-website)
+    git clone https://github.com/netanelnagar/my-website
     ```
 
 2.  **Install dependencies:**
@@ -64,7 +64,7 @@ The website is automatically deployed to GitHub Pages using GitHub Actions. To d
 ## Contact
 
 *   Email: netanelnagar1234@gmail.com
-*   LinkedIn: [[your LinkedIn profile URL]](https://www.linkedin.com/in/netanel-n)
+*   LinkedIn: [[My LinkedIn]](https://www.linkedin.com/in/netanel-n)
 
 © 2025 Developed by Netanel Nagar
 
