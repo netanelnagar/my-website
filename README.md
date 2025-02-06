@@ -1,69 +1,70 @@
-# Welcome to your Lovable project
+# My Portfolio Website
 
-## Project info
+This is my personal portfolio website, showcasing my skills and projects.
 
-**URL**: https://lovable.dev/projects/e8e32f7e-26ab-4c7d-aaa4-9ae63d988f17
+## Projects
 
-## How can I edit this code?
+This section describes the projects featured on the website.
 
-There are several ways of editing your application.
+### My Website
 
-**Use Lovable**
+*   **Technologies:** React.js (TS), Tailwind CSS, Design Patterns, TanStack (react-query), Routing, Code Splitting, Lazy Loading, CI/CD (GitHub Action), Firebase
+*   **Description:** React + TypeScript frontend designed with Tailwind CSS. Includes routing, performance optimization using React Suspense, code splitting, and lazy loading. Additionally, it follows design patterns and communicates with Firebase for data handling via TanStack (React Query). The project also includes CI/CD and is automatically deployed to GitHub Pages.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e8e32f7e-26ab-4c7d-aaa4-9ae63d988f17) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features
 
-**Use your preferred IDE**
+*   **Responsive Design:** The website is designed to be responsive and work well on different devices.
+*   **Performance Optimization:** The website uses React Suspense, code splitting, and lazy loading to improve performance.
+*   **Data Handling:** The website uses TanStack Query (React Query) to efficiently fetch and manage data from Firebase.
+*   **Automated Deployment:** The website is automatically deployed to GitHub Pages using CI/CD (GitHub Actions).
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1.  **Clone the repository:**
 
-Follow these steps:
+    ```bash
+    git clone [[repository URL]](https://github.com/netanelnagar/my-website)
+    ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2.  **Install dependencies:**
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+    ```bash
+    cd my-portfolio-website
+    npm install
+    ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3.  **Configure environment variables:**
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+    *   Create a `.env` file in the root directory.
+    *   Add your Firebase API keys and other sensitive information to the `.env` file:
 
-**Edit a file directly in GitHub**
+        ```
+        REACT_APP_FIREBASE_API_KEY=your_api_key
+        REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+        # ... other Firebase config
+        ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+4.  **Run the development server:**
 
-**Use GitHub Codespaces**
+    ```bash
+    npm run dev
+    ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+    The website will be available at `http://localhost:8080`.
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with .
+The website is automatically deployed to GitHub Pages using GitHub Actions. To deploy your own version:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1.  **Create a GitHub repository:** Create a new GitHub repository for your project.
+2.  **Enable GitHub Pages:** In your repository action, click on Publish Node.js Package to GitHub Packages.
+3.  **Configure GitHub Actions:** The `deploy.yml` file in the `.github/workflows` directory contains the configuration for the GitHub Actions workflow. You may need to adjust this file to match your specific needs.
 
-## How can I deploy this project?
+## Contact
 
-Simply open [Lovable](https://lovable.dev/projects/e8e32f7e-26ab-4c7d-aaa4-9ae63d988f17) and click on Share -> Publish.
+*   Email: netanelnagar1234@gmail.com
+*   LinkedIn: [[your LinkedIn profile URL]](https://www.linkedin.com/in/netanel-n)
 
-## I want to use a custom domain - is that possible?
+© 2025 Developed by Netanel Nagar
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
