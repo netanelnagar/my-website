@@ -7,7 +7,7 @@ const Home = () => {
   const { isLoading } = useAppContext();
 
   useEffect(() => {
-    document.title = "Netanel Nagar";
+    document.title = "Home | Netanel Nagar";
   }, []);
 
   if (isLoading) return <div className="loader m-auto h-6 w-6"></div>;

@@ -59,7 +59,7 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    document.title = "Contact";
+    document.title = "Contact | Netanel Nagar";
     const interval = setInterval(() => {
       moreThanTwo.current = 0;
      }, 60 * 60 * 1000);

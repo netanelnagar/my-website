@@ -10,7 +10,7 @@ const Resume = () => {
   const { data } = useAppContext();
 
   useEffect(() => {
-    document.title = "Resume";
+    document.title = "Resume | Netanel Nagar";
   }, []);
 
 
