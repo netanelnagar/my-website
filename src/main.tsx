@@ -18,47 +18,54 @@ const Home = lazy(() => import('./pages/Home.tsx'));
 const Contact = lazy(() => import('./components/Contact.tsx'));
 
 
-const fallbackLoader = <div className="loader m-auto h-6 w-6"></div>;
-const errorElement = <ErrorBoundary />;
-
-const withSuspense = (Component: React.LazyExoticComponent<React.ComponentType<any>>) => (
-    <Suspense fallback={fallbackLoader}>
-        <Component />
-    </Suspense>
-);
-
-const routes = [
+const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
         children: [
             {
                 index: true,
-                element: withSuspense(Home),
-                errorElement
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Home />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "/resume",
-                element: withSuspense(Resume),
-                errorElement
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Resume />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "/projects",
-                element: withSuspense(Projects),
-                errorElement
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Projects />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             },
             {
                 path: "/contact",
-                element: withSuspense(Contact),
-                errorElement
+                element: (
+                    <Suspense fallback={<div className="loader m-auto h-6 w-6"></div>}>
+                        <Contact />
+                    </Suspense>
+                ),
+                errorElement: <ErrorBoundary />
             }
         ]
+    },
+    {
+        path: "/my-website/",
+        element: <Navigate to={"/"} />
     }
-]
-
-const router = createBrowserRouter(routes, {
-  basename: import.meta.env.BASE_URL,
-});
+]);
 
 const queryClient = new QueryClient({
     defaultOptions: {
