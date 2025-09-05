@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { Menu, X } from "lucide-react";
 import { MdOutlineMenu } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";

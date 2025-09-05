@@ -39,7 +39,7 @@ const AboutMe = () => {
             <IoLogoGithub  size={32} />
           </a>
           <a
-            href=" https://wa.me/972555686119"
+            href={import.meta.env.VITE_WHATSAPP_LINK}
             target="_blank"
             className="text-primary hover:text-secondary transition-colors"
             aria-label="Twitter"

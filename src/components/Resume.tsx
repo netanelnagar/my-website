@@ -1,4 +1,3 @@
-// import { Download, Code, Scissors } from "lucide-react";
 import { CiSaveDown2 } from "react-icons/ci";
 import { HiScissors } from "react-icons/hi2";
 import { IoCodeSlashSharp } from "react-icons/io5";
